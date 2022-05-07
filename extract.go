@@ -2,6 +2,8 @@ package extract
 
 import (
 	"context"
+
+	"github.com/chyroc/extract/pkgs"
 )
 
 type Meta struct {
@@ -10,5 +12,12 @@ type Meta struct {
 }
 
 func GetMeta(ctx context.Context, url string) (*Meta, error) {
-	panic("impl")
+	title, content, err := pkgs.Run(ctx, url)
+	if err != nil {
+		return nil, err
+	}
+	return &Meta{
+		Title:   title,
+		Content: content,
+	}, nil
 }
