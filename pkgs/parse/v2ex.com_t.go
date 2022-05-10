@@ -1,7 +1,6 @@
 package parse
 
 import (
-	"net/url"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
@@ -11,17 +10,16 @@ func init() {
 	register(&v2exComT{})
 }
 
-type v2exComT struct {
-}
+type v2exComT struct{}
 
-func (r v2exComT) Host() []string {
+func (r v2exComT) SupportHost() []string {
 	return []string{
 		"v2ex.com",
 		"www.v2ex.com",
 	}
 }
 
-func (r v2exComT) Parse(url *url.URL, html string) (string, string, error) {
+func (r v2exComT) Parse(url string, html string) (string, string, error) {
 	doc, _ := goquery.NewDocumentFromReader(strings.NewReader(html))
 	sel := doc.Find("#Main")
 	// sel.Find(".highlight__panel").Remove()

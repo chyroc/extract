@@ -33,5 +33,5 @@ func testPage(uri string) (string, string, error) {
 		return "", "", err
 	}
 
-	return Parse(urlParsed, string(bs))
+	return Parse(uri, urlParsed, string(bs))
 }

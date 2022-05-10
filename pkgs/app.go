@@ -22,5 +22,5 @@ func Run(ctx context.Context, uri string) (string, string, error) {
 	}
 
 	// 解析
-	return parse.Parse(urlParsed, html)
+	return parse.Parse(uri, urlParsed, html)
 }
